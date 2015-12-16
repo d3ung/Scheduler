@@ -8,6 +8,8 @@
 
     <link rel="stylesheet" href="stylesheets/pure/pure-min.css">
     <link rel="stylesheet" href="stylesheets/pure/side-menu.css">
+
+
 </head>
 
 <body>
@@ -17,27 +19,57 @@
             <h2>Plan yo shit here!</h2>
         </div>
 
-        <div align="center"  class="content">
-            <h2 class="content-subhead">Sign Up / Login </h2>
-            <form class="pure-form pure-form-stacked">
-			    <fieldset>
-			        <label for="email">Email</label>
-			        <input  id="email" type="email" placeholder="Email">
+		<style scoped>
+	        .button-xsmall {
+	            font-size: 70%;
+	        }
+	        .button-small {
+	            font-size: 85%;
+	        }
+	    </style>
 
-			        <label for="password">Password</label>
-			        <input id="password" type="password" placeholder="Password">
+        <div style="padding: 20px 0px 0px 300px"class="content">
+			    <div style='float:left'>
+					<h2> Login </h2>
+			        <form class="pure-form pure-form-stacked">
+					    <fieldset>
+					        <label for="email">Email</label>
+					        <input id="email" type="email" placeholder="Email">
 
-			        <label for="remember" class="pure-checkbox">
-			            <input id="remember" type="checkbox"> Remember me
-			        </label>
+					        <label for="password">Password</label>
+					        <input id="password" type="password" placeholder="Password">
 
-			        <button type="submit" class="pure-button pure-button-primary">Sign in</button>
-			    </fieldset>
-			</form>
+					        <label for="remember" class="pure-checkbox">
+					        	<input id="remember" type="checkbox"> Remember me
+					        </label>
 
-           
-        </div>
-    </div>
+					        <button type="submit" class="pure-button pure-button-primary">Login</button>
+					    </fieldset>
+					</form>
+				</div>
+
+				<div style="padding: 0px 0px 0px 350px">
+					<h2> Sign Up </h2>
+			        <form class="pure-form pure-form-stacked">
+					    <fieldset>
+					    	<div>
+						        <label for="email">Email</label>
+						        <input id="email" type="email" placeholder="Email">
+
+						        <label for="password">Password</label>
+						        <input id="password" type="password" placeholder="Password">
+
+						        <label for="password">Password (again) </label>
+						        <input id="password" type="password" placeholder="Password">
+					        </div>
+					        <div style="padding-top:5px" div>
+					       	 	<button type="submit" class="pure-button pure-button-primary">Sign up</button>
+					    	</div>
+					    </fieldset>
+					</form>
+				</div>
+        </div> <!-- End of Content -->
+    </div> <!-- End of Main -->
 </body>
 </html>
 
