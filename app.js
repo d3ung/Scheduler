@@ -5,10 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-// New require with homepage
-var home = require('./routes/home');
+var routes = require('./controllers/index');
+var users = require('./controllers/users');
+// New require with home and db
+var home = require('./controllers/home');
+var db = require('./db');
 
 var app = express();
 
@@ -31,6 +32,7 @@ app.use('/', routes);
 app.use('/users', users);
 //New use with homepage
 app.use('/', home);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -63,5 +65,17 @@ app.use(function(err, req, res, next) {
   });
 });
 
+
+/*db.connect('mongodb://localhost:27017/mydatabase', function(err) {
+  if (err) {
+    console.log('Unable to connect to Mongo.')
+    process.exit(1)
+  } else {
+    app.listen(3000, function() {
+      console.log('Listening on port 3000...')
+    })
+  }
+});
+*/
 
 module.exports = app;
