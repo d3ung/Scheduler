@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+var db = require('../db');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Login' });
@@ -15,4 +17,12 @@ router.get('/home', function(req, res, next) {
 router.get('/plan', function(req, res, next) {
   res.render('plan', { title: 'Planner' });
 });
+
+
+db.connect('mongodb://localhost:27017/test', function(err, db2) {
+	db.get().collection('info').find().toArray(function(err,res){
+		console.log(res[0].email);
+});
+});
+
 module.exports = router;
