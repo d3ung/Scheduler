@@ -13,8 +13,6 @@ var db = require('./db');
 
 var app = express();
 
-
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
@@ -30,9 +28,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-//New use with homepage
-app.use('/', home);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
