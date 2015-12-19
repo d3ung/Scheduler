@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var db = require('../db');
+var ObjectId = require('../db').ObjectId;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

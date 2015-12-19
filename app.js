@@ -61,7 +61,7 @@ app.use(function(err, req, res, next) {
 });
 
 
-db.connect('mongodb://localhost:27017/mydatabase', function(err, db2) {
+/*db.connect('mongodb://localhost:27017/mydatabase', function(err, db2) {
   if (err) {
     console.log('Unable to connect to Mongo.')
     process.exit(1)
@@ -70,7 +70,7 @@ db.connect('mongodb://localhost:27017/mydatabase', function(err, db2) {
       console.log('Listening on port 3000...')
     })
   }
-});
+});*/
 
 
 module.exports = app;

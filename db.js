@@ -10,7 +10,6 @@ exports.connect = function(url, done) {
   MongoClient.connect(url, function(err, db) {
     if (err) return done(err)
     state.db = db
-    console.log('success connecting' + db)
     done()
   })
 }
@@ -28,3 +27,5 @@ exports.close = function(done) {
     })
   }
 }
+
+//exports.insertItem = function
