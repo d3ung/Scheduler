@@ -22,7 +22,7 @@ router.get('/plan', function(req, res, next) {
 
 db.connect('mongodb://localhost:27017/test', function(err, db2) {
 	db.get().collection('info').find().toArray(function(err,res){
-		console.log(res[0].email);
+		console.log(res[0].email);   // PRINT LINE HERE
 });
 });
 
