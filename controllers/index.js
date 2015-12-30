@@ -24,23 +24,27 @@ router.post('/addPerson', function(req,res,next){
 
 	var db = require('../db');
 	db.connect('mongodb://localhost:27017/test', function(err, db2) {
-/*	db.get().collection('info').find().toArray(function(err,res){
-		console.log(res[0].email);   // PRINT LINE HERE (1)
-	});*/
+	if(req.body.passwordSign != req.body.passwordSign2){
+		console.log('Not same password');
+		res.render('index' , {title: 'Login'});
 
-	var insertInfo = function(db, infoArr, callback){
-		db.get().collection('info').insertOne({
-			"email" : req.body.emailSign,
-			"password" : req.body.passwordSign
-		}, function(err, result){
-			console.log('Success! Inserted doc');
-			callback(result);
+	}else{
+		var insertInfo = function(db, infoArr, callback){
+			db.get().collection('info').insertOne({
+				"email" : req.body.emailSign,
+				"password" : req.body.passwordSign
+			}, function(err, result){
+				console.log('Success! Inserted doc');
+				res.render('home', {title: 'Homepage'});
+				callback(result);
+			});
+		};
+
+		// This is to actually insert the info into DB
+		insertInfo(db,{},function(){
+			console.log('Quiet');
 		});
-	};
-
-	insertInfo(db,{},function(){
-		console.log('Quiet');
-	});
+	}
 
 });
 });
