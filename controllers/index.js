@@ -7,11 +7,11 @@ var ObjectId = require('../db').ObjectId;
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Login' });
-
 });
 
 /* GET home page. */
-router.get('/home', function(req, res, next) {
+router.post('/home', function(req, res, next) {
+  console.log(req.body.emailSign);
   res.render('home', { title: 'Homepage' });
 });
 

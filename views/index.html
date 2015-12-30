@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="stylesheets/pure/pure-min.css">
     <link rel="stylesheet" href="stylesheets/pure/side-menu.css">
 
+
 </head>
 
 <body>
@@ -43,18 +44,18 @@
 					        </label>
 
 					        <!--  <button type="submit" class="pure-button pure-button-primary">Login</button> -->
-					        <a class="pure-button pure-button-primary">Login</a>
+					        <a href="/home" class="pure-button pure-button-primary" >Login</a>
 					    </fieldset>
 					</form>
 				</div>
 
 				<div style="padding: 0px 0px 0px 350px">
 					<h2> Sign Up </h2>
-			        <form class="pure-form pure-form-stacked">
+			        <form method="post" action ="/home" class="pure-form pure-form-stacked">
 					    <fieldset>
 					    	<div>
 						        <label for="email">Email</label>
-						        <input id="emailSign" type="email" placeholder="Email">
+						        <input name ="emailSign" id="emailSign" type="email" placeholder="Email">
 
 						        <label for="password">Password</label>
 						        <input id="passwordSign" type="password" placeholder="Password">
@@ -62,8 +63,8 @@
 						        <label for="password">Password (again) </label>
 						        <input id="password2Sign" type="password" placeholder="Password">
 					        </div>
-					        <div style="padding-top:5px" div>
-					       	 	<button value = "submity" type="submit" class="pure-button pure-button-primary">Sign up</button>
+					        <div style="padding-top:5px">
+					       	 	<button type="submit" class="pure-button pure-button-primary">Sign up</button>
 					    	</div>
 					    </fieldset>
 					</form>
