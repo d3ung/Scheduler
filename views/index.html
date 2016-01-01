@@ -26,7 +26,9 @@
 	        .button-small {
 	            font-size: 85%;
 	        }
+
 	    </style>
+
 
         <div style="padding: 20px 0px 0px 300px"class="content">
 			    <div style='float:left'>
@@ -34,34 +36,35 @@
 			        <form class="pure-form pure-form-stacked">
 					    <fieldset>
 					        <label for="email">Email</label>
-					        <input id="email" type="email" placeholder="Email">
+					        <input required="" id="email" type="email" placeholder="Email">
 
 					        <label for="password">Password</label>
-					        <input id="password" type="password" placeholder="Password">
+					        <input required="" id="password" type="password" placeholder="Password">
 
 					        <label for="remember" class="pure-checkbox">
-					        	<input id="remember" type="checkbox"> Remember me
+					        <input id="remember" type="checkbox"> Remember me
 					        </label>
 
 					        <!--  <button type="submit" class="pure-button pure-button-primary">Login</button> -->
-					        <a href="/home" class="pure-button pure-button-primary" >Login</a>
+					        <button type="submit" class="pure-button pure-button-primary">Login</button>
+					        <!-- <a href="/plan" class="pure-button pure-button-primary" >Login</a> -->
 					    </fieldset>
 					</form>
 				</div>
 
 				<div style="padding: 0px 0px 0px 350px">
 					<h2> Sign Up </h2>
-			        <form method="post" action ="/addPerson" class="pure-form pure-form-stacked">
+			        <form id = "signUpForm" method="post" action ="/addPerson" class="pure-form pure-form-stacked">
 					    <fieldset>
 					    	<div>
 						        <label for="email">Email</label>
-						        <input name ="emailSign" id="emailSign" type="email" placeholder="Email">
+						        <input required="" name ="emailSign" id="emailSign" type="email" placeholder="Email">
 
 						        <label for="password">Password</label>
-						        <input name = "passwordSign" id="passwordSign" type="password" placeholder="Password">
+						        <input required="" name = "passwordSign" id="passwordSign" type="password" placeholder="Password">
 
 						        <label for="password">Password (again) </label>
-						        <input name = "passwordSign2" id="password2Sign" type="password" placeholder="Password">
+						        <input required="" name = "passwordSign2" id="password2Sign" type="password" placeholder="Password">
 					        </div>
 					        <div style="padding-top:5px">
 					       	 	<button type="submit" class="pure-button pure-button-primary">Sign up</button>

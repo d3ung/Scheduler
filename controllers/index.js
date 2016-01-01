@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
-//var db = require('../db');
+var db = require('../db');
 //var ObjectId = require('../db').ObjectId;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Login' });
+  res.render('index', { title: 'Scheduler' });
 });
 
 /* GET home page. */
@@ -20,33 +20,31 @@ router.get('/plan', function(req, res, next) {
 });
 
 router.post('/addPerson', function(req,res,next){
-	console.log(req.body);
+	console.log(req.body); 	// PRINT LINE HERE (1)
 
-	var db = require('../db');
 	db.connect('mongodb://localhost:27017/test', function(err, db2) {
-	if(req.body.passwordSign != req.body.passwordSign2){
-		console.log('Not same password');
-		res.render('index' , {title: 'Login'});
+		if(req.body.passwordSign != req.body.passwordSign2){
+			console.log('Not same password');
+			res.render('index' , {title: 'Login'});
 
-	}else{
-		var insertInfo = function(db, infoArr, callback){
-			db.get().collection('info').insertOne({
-				"email" : req.body.emailSign,
-				"password" : req.body.passwordSign
-			}, function(err, result){
-				console.log('Success! Inserted doc');
-				res.render('home', {title: 'Homepage'});
-				callback(result);
+		}else{
+			var insertInfo = function(db, infoArr, callback){
+				db.get().collection('info').insertOne({
+					"email" : req.body.emailSign,
+					"password" : req.body.passwordSign
+				}, function(err, result){
+					console.log('Success! Inserted doc');
+					res.render('home', {title: 'Homepage'});
+					callback(result);
+				});
+			};
+
+			// This is to actually insert the info into DB
+			insertInfo(db,{},function(){
+				console.log('Calling insertInfo()');
 			});
-		};
-
-		// This is to actually insert the info into DB
-		insertInfo(db,{},function(){
-			console.log('Quiet');
-		});
-	}
-
-});
+		}
+	});
 });
 
 /*db.connect('mongodb://localhost:27017/test', function(err, db2) {
