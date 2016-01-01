@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 var routes = require('./controllers/index');
 var users = require('./controllers/users');
@@ -61,7 +62,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-// TODO: PassportJS
+// =======================================TODO: PassportJS=====================================
 app.use(function(){
 
   /* other config goes here */
@@ -73,12 +74,60 @@ app.use(function(){
   app.use(passport.initialize());
   app.use(passport.session());
 });
-
-// TODO: No need for other files to connect to db
+// =======================TODO: CONNECT TO DB w/o connect every post call======================
 app.use(function(req,res,next){
     req.db = db;
     next();
 });
+// =======================TODO: PASSPORTJS functions. Move to separate file later.======================
+passport.use(new LocalStrategy({
+    // set the field name here
+    usernameField: 'emailSign',
+    passwordField: 'passwordSign'
+  },
+  function(username, password, done) {
+    /* get the username and password from the input arguments of the function */
+
+    // query the user from the database
+    // don't care the way I query from database, you can use
+    // any method to query the user from database
+    User.find( { where: {username: username}} )
+      .success(function(user){
+      
+        if(!user)
+          // if the user is not exist
+          return done(null, false, {message: "The user is not exist"});
+        else if(!hashing.compare(password, user.password))
+          // if password does not match
+          return done(null, false, {message: "Wrong password"});
+        else
+          // if everything is OK, return null as the error
+          // and the authenticated user
+          return done(null, user);
+        
+      })
+      .error(function(err){
+        // if command executed with error
+        return done(err);
+      });
+  }
+));
+
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  // query the current user from database
+  User.find(id)
+    .success(function(user){
+        done(null, user);
+    }).error(function(err){
+        done(new Error('User ' + id + ' does not exist'));
+    });
+});
+
+
 
 
 
