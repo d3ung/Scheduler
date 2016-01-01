@@ -1,7 +1,7 @@
 # Scheduler
 Winter 2015 Scheduler project
 
-Johnson todo: Insert users into db using website.
+Johnson todo: Authentication using PassportJS
 
 Ideal project hierarchy: 
 
