@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var passport = require('passport');
 
 var routes = require('./controllers/index');
 var users = require('./controllers/users');
@@ -60,22 +61,27 @@ app.use(function(err, req, res, next) {
   });
 });
 
+// TODO: PassportJS
+app.use(function(){
+
+  /* other config goes here */
+
+  // put passport config after this line
+  app.use(express.session());
+
+  // passport initialization
+  app.use(passport.initialize());
+  app.use(passport.session());
+});
+
+// TODO: No need for other files to connect to db
 app.use(function(req,res,next){
     req.db = db;
     next();
 });
 
 
-/*db.connect('mongodb://localhost:27017/test', function(err, db2) {
-  if (err) {
-    console.log('Unable to connect to Mongo.')
-    process.exit(1);
-  }else {
-    app.listen(3000, function() {
-      console.log('Listening on port 3000...')
-    })
-  }
-});*/
+
 
 
 module.exports = app;
